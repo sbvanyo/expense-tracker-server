@@ -1,0 +1,35 @@
+[
+  {
+      "model": "tripexpensetracker.expense",
+      "pk": 1,
+      "fields": {
+          "amount": 50.00,
+          "description": "Dinner",
+          "date": "2024-01-30T18:30:00Z",
+          "user": 1,
+          "trip": 1
+      }
+  },
+  {
+      "model": "tripexpensetracker.expense",
+      "pk": 2,
+      "fields": {
+          "amount": 30.00,
+          "description": "Taxi",
+          "date": "2024-01-29T10:00:00Z",
+          "user": 1,
+          "trip": 2
+      }
+  },
+  {
+      "model": "tripexpensetracker.expense",
+      "pk": 3,
+      "fields": {
+          "amount": 100.00,
+          "description": "Hotel",
+          "date": "2024-02-01T14:00:00Z",
+          "user": 1,
+          "trip": 1
+      }
+  }
+]

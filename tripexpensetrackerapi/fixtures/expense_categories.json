@@ -1,0 +1,34 @@
+[
+  {
+      "model": "tripexpensetracker.expensecategory",
+      "pk": 1,
+      "fields": {
+          "expense": 1,
+          "category": 1
+      }
+  },
+  {
+      "model": "tripexpensetracker.expensecategory",
+      "pk": 2,
+      "fields": {
+          "expense": 2,
+          "category": 2
+      }
+  },
+  {
+      "model": "tripexpensetracker.expensecategory",
+      "pk": 3,
+      "fields": {
+          "expense": 3,
+          "category": 3
+      }
+  },
+  {
+      "model": "tripexpensetracker.expensecategory",
+      "pk": 4,
+      "fields": {
+          "expense": 4,
+          "category": 4
+      }
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+      "model": "tripexpensetracker.trip",
+      "pk": 1,
+      "fields": {
+          "user": 1,
+          "name": "Business Trip"
+      }
+  },
+  {
+      "model": "tripexpensetracker.trip",
+      "pk": 2,
+      "fields": {
+          "user": 1,
+          "name": "Vacation"
+      }
+  },
+  {
+      "model": "tripexpensetracker.trip",
+      "pk": 3,
+      "fields": {
+          "user": 1,
+          "name": "Conference"
+      }
+  }
+]
