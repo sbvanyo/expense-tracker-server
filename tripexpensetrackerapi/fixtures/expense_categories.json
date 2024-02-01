@@ -1,6 +1,6 @@
 [
   {
-      "model": "tripexpensetracker.expensecategory",
+      "model": "tripexpensetrackerapi.expensecategory",
       "pk": 1,
       "fields": {
           "expense": 1,
@@ -8,7 +8,7 @@
       }
   },
   {
-      "model": "tripexpensetracker.expensecategory",
+      "model": "tripexpensetrackerapi.expensecategory",
       "pk": 2,
       "fields": {
           "expense": 2,
@@ -16,7 +16,7 @@
       }
   },
   {
-      "model": "tripexpensetracker.expensecategory",
+      "model": "tripexpensetrackerapi.expensecategory",
       "pk": 3,
       "fields": {
           "expense": 3,
@@ -24,10 +24,10 @@
       }
   },
   {
-      "model": "tripexpensetracker.expensecategory",
+      "model": "tripexpensetrackerapi.expensecategory",
       "pk": 4,
       "fields": {
-          "expense": 4,
+          "expense": 3,
           "category": 4
       }
   }

@@ -1,32 +1,35 @@
 [
   {
-      "model": "tripexpensetracker.expense",
+      "model": "tripexpensetrackerapi.expense",
       "pk": 1,
       "fields": {
+          "name": "Dinner",
           "amount": 50.00,
-          "description": "Dinner",
+          "description": "Business dinner at Noma",
           "date": "2024-01-30T18:30:00Z",
           "user": 1,
           "trip": 1
       }
   },
   {
-      "model": "tripexpensetracker.expense",
+      "model": "tripexpensetrackerapi.expense",
       "pk": 2,
       "fields": {
+          "name": "Taxi",
           "amount": 30.00,
-          "description": "Taxi",
+          "description": "Taxi ride back to hotel",
           "date": "2024-01-29T10:00:00Z",
           "user": 1,
           "trip": 2
       }
   },
   {
-      "model": "tripexpensetracker.expense",
+      "model": "tripexpensetrackerapi.expense",
       "pk": 3,
       "fields": {
+          "name": "Hotel",
           "amount": 100.00,
-          "description": "Hotel",
+          "description": "1 night at the Ritz",
           "date": "2024-02-01T14:00:00Z",
           "user": 1,
           "trip": 1
