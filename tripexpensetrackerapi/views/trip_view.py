@@ -4,7 +4,10 @@ from rest_framework.response import Response
 from rest_framework import serializers, status
 from rest_framework.decorators import action
 from tripexpensetrackerapi.models import Trip, Expense, User
-from tripexpensetrackerapi.views.expense_category_view import ExpenseCategorySerializer
+from tripexpensetrackerapi.views.expense_view import ExpenseSerializer
+from tripexpensetrackerapi.views.user_view import UserSerializer
+# from tripexpensetrackerapi.views.expense_category_view import ExpenseCategorySerializer
+# from .expense_category_view import ExpenseCategorySerializer
 
 class TripView(ViewSet):
     """Trip view"""
@@ -98,10 +101,29 @@ class TripView(ViewSet):
         except Exception as e:
             return Response({'error': f'An error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-class TripSerializer(serializers.ModelSerializer):
-    """JSON serializer for trips."""
+# class TripSerializer(serializers.ModelSerializer):
+#     """JSON serializer for trips."""
     
+#     class Meta:
+#         model = Trip
+#         fields = ('id', 'user', 'name', 'expenses')
+#         depth = 1
+
+# This version mae introduce naming conflicts as user and expenses have similar fields:
+# class TripSerializer(serializers.ModelSerializer):
+#     user = UserSerializer()
+#     expenses = ExpenseSerializer(many=True)
+
+#     class Meta:
+#         model = Trip
+#         fields = ('id', 'name', 'user', 'expenses')
+#         depth = 1
+
+class TripSerializer(serializers.ModelSerializer):
+    user_details = UserSerializer(source='user', read_only=True)
+    expense_details = ExpenseSerializer(source='expenses', many=True, read_only=True)
+
     class Meta:
         model = Trip
-        fields = ('id', 'user', 'name', 'expenses')
+        fields = ('id', 'name', 'user_details', 'expense_details')
         depth = 1
