@@ -39,6 +39,7 @@ class ExpenseView(ViewSet):
 
             expense = Expense.objects.create(
                 user=user,
+                name=request.data["name"],
                 amount=request.data["amount"],
                 description=request.data["description"],
                 date=request.data["date"],
@@ -64,6 +65,7 @@ class ExpenseView(ViewSet):
             categories = Category.objects.filter(pk__in=category_ids)
 
             expense.user = user
+            expense.name = request.data["name"]
             expense.amount = request.data["amount"]
             expense.description = request.data["description"]
             expense.date = request.data["date"]
@@ -129,5 +131,5 @@ class ExpenseSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Expense
-        fields = ('id', 'user', 'amount', 'description', 'date', 'categories')
+        fields = ('id', 'name', 'user', 'amount', 'description', 'date', 'categories')
         depth = 1

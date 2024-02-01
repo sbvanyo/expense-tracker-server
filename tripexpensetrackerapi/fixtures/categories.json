@@ -1,34 +1,34 @@
 [
   {
-      "model": "tripexpensetracker.category",
+      "model": "tripexpensetrackerapi.category",
       "pk": 1,
       "fields": {
           "name": "Food"
       }
   },
   {
-      "model": "tripexpensetracker.category",
+      "model": "tripexpensetrackerapi.category",
       "pk": 2,
       "fields": {
           "name": "Business"
       }
   },
   {
-      "model": "tripexpensetracker.category",
+      "model": "tripexpensetrackerapi.category",
       "pk": 3,
       "fields": {
           "name": "Transportation"
       }
   },
   {
-      "model": "tripexpensetracker.category",
+      "model": "tripexpensetrackerapi.category",
       "pk": 4,
       "fields": {
           "name": "Entertainment"
       }
   },
   {
-    "model": "tripexpensetracker.category",
+    "model": "tripexpensetrackerapi.category",
     "pk": 5,
     "fields": {
         "name": "Recreation"

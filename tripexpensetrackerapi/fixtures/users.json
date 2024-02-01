@@ -1,0 +1,10 @@
+[
+  {
+    "model": "tripexpensetrackerapi.user",
+    "pk": 1,
+    "fields": {
+      "name": "Stacey Vanyo",
+      "uid": "ymysYrBVhnNphsTDqfKnxfMDWHh1"
+    }
+  }
+]
