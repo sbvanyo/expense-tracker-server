@@ -1,1 +1,1 @@
-DELETE FROM tripexpensetrackerapi_user WHERE id = 1;
+DELETE FROM tripexpensetrackerapi_user WHERE id = 2;

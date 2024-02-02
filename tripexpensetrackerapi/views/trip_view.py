@@ -58,18 +58,30 @@ class TripView(ViewSet):
             return Response({'message': 'Trip not found'}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response({'message': f'An error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+        
     def destroy(self, request, pk):
-        """Handle DELETE requests to delete a trip."""
+        """Handle DELETE requests to delete a trip"""
         try:
             trip = Trip.objects.get(pk=pk)
+
+            # Fetch all associated expenses for the trip
+            expenses = Expense.objects.filter(trip=trip)
+
+            # Delete each expense (this will trigger the ExpenseCategoryView logic)
+            for expense in expenses:
+                expense.delete()
+
+            # Now delete the trip
             trip.delete()
+
             return Response(None, status=status.HTTP_204_NO_CONTENT)
         except Trip.DoesNotExist:
             return Response({'message': 'Trip not found'}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response({'message': f'An error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+        
+    # ADD/REMOVE trip expenses
+    
     @action(methods=['post'], detail=True)
     def add_trip_expense(self, request, pk):
         """Post request for a user to add an expense to a trip."""
@@ -77,6 +89,7 @@ class TripView(ViewSet):
             expense = Expense.objects.get(pk=request.data["expense"])
             trip = Trip.objects.get(pk=pk)
             
+            # Adds expense to the trip
             trip.expenses.add(expense)
             return Response({'message': 'Expense added to trip'}, status=status.HTTP_201_CREATED)
         except Expense.DoesNotExist:
@@ -87,37 +100,32 @@ class TripView(ViewSet):
             return Response({'error': f'An error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @action(methods=['delete'], detail=True)
-    def remove_trip_expense(self, request, pk):
+    def remove_trip_expense(self, request, pk, expense_id):
         """Delete request for a user to remove an expense from a trip."""
         try:
-            expense_id = request.data.get("expense")
             trip = Trip.objects.get(pk=pk)
             
-            # Remove the expense from the trip
-            trip.expenses.remove(expense_id)
+            # Retrieves the Expense instance
+            expense = Expense.objects.get(pk=expense_id)
+
+            # Checks if the expense is associated with the trip before removing
+            if expense not in trip.expenses.all():
+                return Response({'error': 'Expense is not associated with the trip.'}, status=status.HTTP_404_NOT_FOUND)
+
+            # Removes the expense from the trip
+            trip.expenses.remove(expense)
+            
             return Response({'message': 'Expense removed from trip'}, status=status.HTTP_204_NO_CONTENT)
+        
         except Trip.DoesNotExist:
             return Response({'error': 'Trip not found.'}, status=status.HTTP_404_NOT_FOUND)
+        
+        except Expense.DoesNotExist:
+            return Response({'error': 'Expense not found.'}, status=status.HTTP_404_NOT_FOUND)
+
         except Exception as e:
             return Response({'error': f'An error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-# class TripSerializer(serializers.ModelSerializer):
-#     """JSON serializer for trips."""
-    
-#     class Meta:
-#         model = Trip
-#         fields = ('id', 'user', 'name', 'expenses')
-#         depth = 1
-
-# This version mae introduce naming conflicts as user and expenses have similar fields:
-# class TripSerializer(serializers.ModelSerializer):
-#     user = UserSerializer()
-#     expenses = ExpenseSerializer(many=True)
-
-#     class Meta:
-#         model = Trip
-#         fields = ('id', 'name', 'user', 'expenses')
-#         depth = 1
 
 class TripSerializer(serializers.ModelSerializer):
     user_details = UserSerializer(source='user', read_only=True)
