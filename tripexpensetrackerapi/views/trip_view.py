@@ -6,8 +6,6 @@ from rest_framework.decorators import action
 from tripexpensetrackerapi.models import Trip, Expense, User
 from tripexpensetrackerapi.views.expense_view import ExpenseSerializer
 from tripexpensetrackerapi.views.user_view import UserSerializer
-# from tripexpensetrackerapi.views.expense_category_view import ExpenseCategorySerializer
-# from .expense_category_view import ExpenseCategorySerializer
 
 class TripView(ViewSet):
     """Trip view"""

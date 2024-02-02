@@ -147,23 +147,6 @@ class ExpenseView(ViewSet):
             return Response({'error': 'Category not found.'}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response({'error': f'An error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    # @action(methods=['delete'], detail=True)
-    # def remove_expense_category(self, request, pk):
-    #     """Delete request for a user to remove a category from an expense"""
-    #     try:
-    #         expensecategory_id = request.data.get("expense_category")
-    #         if not expensecategory_id:
-    #             return Response({"error": "Expense category ID not provided"}, status=status.HTTP_400_BAD_REQUEST)
-
-    #         expense_category = ExpenseCategory.objects.get(pk=expensecategory_id, expense__pk=pk)
-    #         expense_category.delete()
-
-    #         return Response({"message": "Expense category removed"}, status=status.HTTP_204_NO_CONTENT)
-    #     except ExpenseCategory.DoesNotExist:
-    #         return Response({"error": "Expense category not found"}, status=status.HTTP_404_NOT_FOUND)
-    #     except Exception as e:
-    #         return Response({'error': f'An error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
     @action(methods=['delete'], detail=True)
     def remove_expense_category(self, request, pk, expense_category):

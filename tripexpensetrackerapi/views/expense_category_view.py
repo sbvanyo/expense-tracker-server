@@ -3,10 +3,6 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from tripexpensetrackerapi.models import ExpenseCategory, Expense, Category
-# from tripexpensetrackerapi.views.expense_view import ExpenseSerializer
-# from tripexpensetrackerapi.views.category_view import CategorySerializer
-# from .expense_view import ExpenseSerializer
-# from .category_view import CategorySerializer
 
 class ExpenseCategoryView(ViewSet):
     """ExpenseCategory view"""
@@ -65,15 +61,6 @@ class ExpenseCategoryView(ViewSet):
         except Exception as e:
             return Response({'message': f'An error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-# class ExpenseCategorySerializer(serializers.ModelSerializer):
-#     """JSON serializer for expense categories."""
-#     expense = ExpenseSerializer(read_only=True)
-#     category = CategorySerializer(read_only=True)
-    
-#     class Meta:
-#         model = ExpenseCategory
-#         fields = ('id', 'expense', 'category')
-#         depth = 1
 
 class ExpenseCategorySerializer(serializers.ModelSerializer):
     """JSON serializer for expense categories."""
