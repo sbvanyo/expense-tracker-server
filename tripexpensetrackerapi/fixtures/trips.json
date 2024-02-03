@@ -4,7 +4,7 @@
       "pk": 1,
       "fields": {
           "name": "Business Trip",
-          "date": "2024-02-03T10:37:00Z",
+          "date": "2024-02-03",
           "description": "Our business trip."
       }
   },
@@ -13,7 +13,7 @@
       "pk": 2,
       "fields": {
           "name": "Vacation",
-          "date": "2024-02-03T10:37:00Z",
+          "date": "2024-02-03",
           "description": "Our vacation trip."
       }
   },
@@ -22,7 +22,7 @@
       "pk": 3,
       "fields": {
           "name": "Conference",
-          "date": "2024-02-03T10:37:00Z",
+          "date": "2024-02-03",
           "description": "Our conference trip."
       }
   }

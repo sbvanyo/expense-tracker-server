@@ -37,6 +37,8 @@ class TripView(ViewSet):
             trip = Trip.objects.create(
                 user=user,
                 name=request.data["name"],
+                date=request.data["date"],
+                description=request.data["description"],
             )
             serializer = TripSerializer(trip)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -131,5 +133,5 @@ class TripSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Trip
-        fields = ('id', 'name', 'user_details', 'expense_details')
+        fields = ('id', 'name', 'date', 'description', 'user_details', 'expense_details')
         depth = 1
