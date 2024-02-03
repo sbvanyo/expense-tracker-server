@@ -33,7 +33,7 @@ class TripView(ViewSet):
     def create(self, request):
         """Handle POST operations, create a new trip."""
         try:
-            user = User.objects.get(pk=request.data["user"])
+            user = User.objects.get(pk=request.data["userId"])
             trip = Trip.objects.create(
                 user=user,
                 name=request.data["name"],
