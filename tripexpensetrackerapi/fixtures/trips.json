@@ -3,21 +3,27 @@
       "model": "tripexpensetrackerapi.trip",
       "pk": 1,
       "fields": {
-          "name": "Business Trip"
+          "name": "Business Trip",
+          "date": "2024-02-03T10:37:00Z",
+          "description": "Our business trip."
       }
   },
   {
       "model": "tripexpensetrackerapi.trip",
       "pk": 2,
       "fields": {
-          "name": "Vacation"
+          "name": "Vacation",
+          "date": "2024-02-03T10:37:00Z",
+          "description": "Our vacation trip."
       }
   },
   {
       "model": "tripexpensetrackerapi.trip",
       "pk": 3,
       "fields": {
-          "name": "Conference"
+          "name": "Conference",
+          "date": "2024-02-03T10:37:00Z",
+          "description": "Our conference trip."
       }
   }
 ]
