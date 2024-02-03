@@ -34,5 +34,7 @@ urlpatterns = [
     path('checkuser', check_user, name='check-user'),
     path('register', register_user, name='register-user'),
     path('trips/<int:pk>/add_expense', TripView.as_view({'post': 'add_trip_expense'}), name='trip-add-expense'),
-    path('trips/<int:pk>/remove_trip_expense', TripView.as_view({'delete': 'remove_trip_expense'}), name='trip-remove-expense'),
+    path('trips/<int:pk>/remove_trip_expense/<int:expense_id>', TripView.as_view({'delete': 'remove_trip_expense'}), name='trip-remove-expense'),
+    path('expenses/<int:pk>/remove_expense_category/<int:expense_category>', ExpenseView.as_view({'delete': 'remove_expense_category'}), name='expense-remove-expense-category')
+
 ]
