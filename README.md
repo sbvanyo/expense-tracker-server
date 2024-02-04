@@ -4,9 +4,7 @@
 [David Poole](https://github.com/DavidBPoole)
 [Stacey Vanyo](https://github.com/sbvanyo)
 
-# FE Repository:
+# FE Repository/Contributors:
 [FE Repository](https://github.com/NSS-Evening-25-Cohort/Trip-Expense-Tracker)
-
-  # FE Contributors:
-  [Max Rubel](https://github.com/MaxRubel)
-  [Thomas McMahon](https://github.com/glassoctopus)
+[Max Rubel](https://github.com/MaxRubel)
+[Thomas McMahon](https://github.com/glassoctopus)
