@@ -20,11 +20,16 @@ class TripView(ViewSet):
             return Response({'message': 'Trip not found'}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response({'message': f'An error occurred: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+    
     def list(self, request):
-        """Handle GET requests to get all trips."""
+        """Handle GET requests to get all trips for a specific user."""
         try:
-            trips = Trip.objects.all()
+            # Gets user ID from the request
+            user_id = request.query_params.get('userId', None)
+
+            # Filters trips based on the user's ID
+            trips = Trip.objects.filter(user__id=user_id)
+
             serializer = TripSerializer(trips, many=True)
             return Response(serializer.data)
         except Exception as e:
@@ -64,14 +69,14 @@ class TripView(ViewSet):
         try:
             trip = Trip.objects.get(pk=pk)
 
-            # Fetch all associated expenses for the trip
+            # Fetches all associated expenses for the trip
             expenses = Expense.objects.filter(trip=trip)
 
-            # Delete each expense (this will trigger the ExpenseCategoryView logic)
+            # Deletes each expense (this will trigger the ExpenseCategoryView logic cascade)
             for expense in expenses:
                 expense.delete()
 
-            # Now delete the trip
+            # Now deletes the trip
             trip.delete()
 
             return Response(None, status=status.HTTP_204_NO_CONTENT)
