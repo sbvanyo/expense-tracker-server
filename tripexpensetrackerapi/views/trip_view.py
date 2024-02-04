@@ -93,7 +93,11 @@ class TripView(ViewSet):
         try:
             expense = Expense.objects.get(pk=request.data["expense"])
             trip = Trip.objects.get(pk=pk)
-            
+
+            # Updates the user of the expense to be the user associated with the trip
+            expense.user = trip.user
+            expense.save()
+
             # Adds expense to the trip
             trip.expenses.add(expense)
             return Response({'message': 'Expense added to trip'}, status=status.HTTP_201_CREATED)
