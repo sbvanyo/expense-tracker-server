@@ -57,6 +57,8 @@ class TripView(ViewSet):
         try:
             trip = Trip.objects.get(pk=pk)
             trip.name = request.data["name"]
+            trip.date = request.data.get("date", trip.date)
+            trip.description = request.data.get("description", trip.description)
             trip.save()
             return Response(None, status=status.HTTP_204_NO_CONTENT)
         except Trip.DoesNotExist:
